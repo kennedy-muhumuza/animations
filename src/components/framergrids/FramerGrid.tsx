@@ -1,4 +1,5 @@
 import { motion, useScroll } from "framer-motion";
+import ScrollProgress from "../scroll-progress/ScrollProgress";
 
 const gridContainerVariants = {
   hidden: { opacity: 0 },
@@ -12,14 +13,17 @@ const gridSquareVariants = {
 
 const FramerGrid = () => {
   const { scrollYProgress: completionProgress } = useScroll();
+  console.log("completionProgress", completionProgress);
   return (
     <div className="flex flex-col gap-10 overflow-x-hidden">
-      <motion.div className=" w-full aspect-square bg-gray-900 rounded-xl fixed h-7">
+      <ScrollProgress />
+      {/* <motion.div className=" w-full aspect-square bg-gray-900 rounded-sm fixed h-3">
         <motion.div
-          className={`w-[${completionProgress}rem] bg-gray-300 rounded-xl origin-bottom h-71 w`}
-          //   style={{ scaleX: completionProgress }}
+          className="w-full bg-gray-300 rounded-sm origin-bottom h-3"
+          //   className={`w-${completionProgress} bg-gray-300 rounded-xl origin-bottom h-7`}
+          style={{ scaleX: completionProgress }}
         ></motion.div>
-      </motion.div>
+      </motion.div> */}
       <motion.section
         variants={gridContainerVariants}
         initial="hidden"
